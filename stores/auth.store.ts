@@ -1,11 +1,11 @@
-import { authApi } from '~/apis/auth.api';
+import { authApi } from '~/apis/pre-built/1-auth.api';
 import type {
 	AuthUser,
 	Login,
 	Register,
 	ResetPassword,
 	SocialLogin,
-} from '~/types/auth.type';
+} from '~/types/pre-built/1-auth';
 import { handleError } from '~/utils/helpers/handle-error.helper';
 import { storageHelper } from '~/utils/helpers/storage.helper';
 
