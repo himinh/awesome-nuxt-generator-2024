@@ -1,5 +1,5 @@
-import type { MenuGroup } from './6-menu-group';
-import type { SystemMenu } from './8-system-menu';
+import type { MenuGroup } from "./6-menu-group";
+import type { SystemMenu } from "./8-system-menu";
 
 export type Menu = {
   _id?: string;

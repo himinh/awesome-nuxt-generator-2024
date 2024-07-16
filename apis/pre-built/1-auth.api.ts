@@ -7,11 +7,11 @@ import type {
   SendOtpToRegister,
   SendTokenToRegister,
   SocialLogin,
-} from '~/types/pre-built/1-auth';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions } from '~/utils/types';
+} from "~/types/pre-built/1-auth";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions } from "~/utils/types";
 
-const AUTH_URL = '/auth';
+const AUTH_URL = "/auth";
 
 export const authApi = {
   register: (data: Register, options?: FetchOptions): Promise<AuthUser> => {
@@ -44,7 +44,7 @@ export const authApi = {
   },
 
   sendOtp: (
-    data: Omit<SendOtpToRegister, 'expiresAt'>,
+    data: Omit<SendOtpToRegister, "expiresAt">,
     options?: FetchOptions,
   ): Promise<SendOtpToRegister> => {
     return guestFetch.post(`${AUTH_URL}/send_token`, data, options);

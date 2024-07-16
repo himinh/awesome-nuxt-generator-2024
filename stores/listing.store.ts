@@ -1,10 +1,10 @@
-import { listingApi } from '~/apis/2-listing.api';
-import { useListingQuery } from '~/composables/useListingQuery';
-import type { Listing } from '~/types/2-listing';
-import type { PageInfo } from '~/types/paginate-reponse.type';
-import { handleError } from '~/utils/helpers/handle-error.helper';
+import { listingApi } from "~/apis/2-listing.api";
+import { useListingQuery } from "~/composables/useListingQuery";
+import type { Listing } from "~/types/2-listing";
+import type { PageInfo } from "~/types/paginate-reponse.type";
+import { handleError } from "~/utils/helpers/handle-error.helper";
 
-export const useListingStore = defineStore('listings', () => {
+export const useListingStore = defineStore("listings", () => {
   const listings = ref<Listing[]>([]);
   const pageInfo = ref<PageInfo>();
   const isLoadMoreLoading = ref<boolean>(false);
@@ -25,7 +25,7 @@ export const useListingStore = defineStore('listings', () => {
     data: listingPagination,
     error,
   } = useAsyncData(
-    'listings-pagination',
+    "listings-pagination",
     () => {
       if (authUser.value?.user._id)
         Object.assign(filter.value, { userId: authUser.value.user._id });

@@ -1,10 +1,10 @@
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { Ward } from '~/types/pre-built/15-ward';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { Ward } from "~/types/pre-built/15-ward";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const WARD_URL = '/wards';
+const WARD_URL = "/wards";
 export const wardApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -45,7 +45,7 @@ export const wardApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${WARD_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${WARD_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<Ward> => {

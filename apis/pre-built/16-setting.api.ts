@@ -1,10 +1,10 @@
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { Setting } from '~/types/pre-built/16-setting';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { Setting } from "~/types/pre-built/16-setting";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const SETTING_URL = '/settings';
+const SETTING_URL = "/settings";
 export const settingApi = {
   //  ----- Method: GET -----
   getOne: (
@@ -38,7 +38,7 @@ export const settingApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${SETTING_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${SETTING_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<Setting> => {

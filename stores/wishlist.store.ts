@@ -1,8 +1,8 @@
-import { listingApi } from '~/apis/2-listing.api';
-import type { Listing } from '~/types/2-listing';
-import type { PageInfo } from '~/types/paginate-reponse.type';
+import { listingApi } from "~/apis/2-listing.api";
+import type { Listing } from "~/types/2-listing";
+import type { PageInfo } from "~/types/paginate-reponse.type";
 
-export const useWishlistStore = defineStore('wishlist', () => {
+export const useWishlistStore = defineStore("wishlist", () => {
   const listings = ref<Listing[]>([]);
   const pageInfo = ref<PageInfo>();
   const isLoadMoreLoading = ref<boolean>(false);
@@ -21,7 +21,7 @@ export const useWishlistStore = defineStore('wishlist', () => {
     data: listingPagination,
     error,
   } = useAsyncData(
-    'wishlist-pagination',
+    "wishlist-pagination",
     () => listingApi.getWishlistPaginate(filter.value),
     {
       watch: [filterWatch, authUser],

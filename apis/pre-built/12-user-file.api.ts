@@ -1,10 +1,10 @@
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { UserFile } from '~/types/pre-built/12-user-file';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { UserFile } from "~/types/pre-built/12-user-file";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const USER_FILE_URL = '/user_files';
+const USER_FILE_URL = "/user_files";
 export const userFileApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -32,7 +32,7 @@ export const userFileApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${USER_FILE_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${USER_FILE_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<UserFile> => {

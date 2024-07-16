@@ -1,11 +1,11 @@
-import type { Listing } from '~/types/2-listing';
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { UpdateResult } from '~/types/update-result';
-import type { ActionEnum } from '~/utils/enums';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { Listing } from "~/types/2-listing";
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { UpdateResult } from "~/types/update-result";
+import type { ActionEnum } from "~/utils/enums";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const LISTING_URL = '/listings';
+const LISTING_URL = "/listings";
 export const listingApi = {
   //  ----- Method: GET -----
   getWishlistPaginate: (
@@ -58,7 +58,7 @@ export const listingApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${LISTING_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${LISTING_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<Listing> => {

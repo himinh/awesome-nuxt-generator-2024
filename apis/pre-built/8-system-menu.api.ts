@@ -1,9 +1,9 @@
-import type { SystemMenu } from '~/types/pre-built/8-system-menu';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { SystemMenu } from "~/types/pre-built/8-system-menu";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const SYSTEM_MENU_URL = '/system_menus';
+const SYSTEM_MENU_URL = "/system_menus";
 export const systemMenuApi = {
   //  ----- Method: GET -----
   getById: (
@@ -37,7 +37,7 @@ export const systemMenuApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${SYSTEM_MENU_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${SYSTEM_MENU_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<SystemMenu> => {

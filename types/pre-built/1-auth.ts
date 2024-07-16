@@ -1,6 +1,6 @@
-import type { AccountTypeEnum, SendOtpToEnum } from '~/utils/enums';
-import type { User } from './2-user';
-import type { AuthTokens } from './9-token';
+import type { AccountTypeEnum, SendOtpToEnum } from "~/utils/enums";
+import type { User } from "./2-user";
+import type { AuthTokens } from "./9-token";
 
 export type Register = {
   fullName: string;

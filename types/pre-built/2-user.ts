@@ -3,8 +3,8 @@ import type {
   AccountTypeEnum,
   GenderEnum,
   RoleEnum,
-} from '~/utils/enums';
-import type { UserGroup } from './3-user-group';
+} from "~/utils/enums";
+import type { UserGroup } from "./3-user-group";
 
 export type User = {
   _id?: string;

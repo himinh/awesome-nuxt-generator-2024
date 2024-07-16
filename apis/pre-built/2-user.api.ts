@@ -1,12 +1,12 @@
-import type { DeleteResult } from '~/types/delete-result';
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { UpdatePassword, User } from '~/types/pre-built/2-user';
-import type { UpdateResult } from '~/types/update-result';
-import type { AccountStatus } from '~/utils/enums';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { DeleteResult } from "~/types/delete-result";
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { UpdatePassword, User } from "~/types/pre-built/2-user";
+import type { UpdateResult } from "~/types/update-result";
+import type { AccountStatus } from "~/utils/enums";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const USER_URL = '/users';
+const USER_URL = "/users";
 
 export const userApi = {
   //  ----- Method: GET -----
@@ -64,7 +64,7 @@ export const userApi = {
   },
 
   deleteHardManyByIds: (ids: string[]): Promise<DeleteResult> => {
-    return authFetch.delete(`${USER_URL}/${ids.join(',')}/hard`);
+    return authFetch.delete(`${USER_URL}/${ids.join(",")}/hard`);
   },
 
   deleteHardById: (id: string): Promise<User> => {
@@ -72,7 +72,7 @@ export const userApi = {
   },
 
   deleteManySoftByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${USER_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${USER_URL}/${ids.join(",")}/ids`);
   },
 
   deleteSoftById: (id: string): Promise<User> => {

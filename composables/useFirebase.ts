@@ -1,13 +1,13 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import {
   FacebookAuthProvider,
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
   signOut,
-} from 'firebase/auth';
-import type { SocialLogin } from '~/types/auth.type';
-import { AccountTypeEnum, GenderEnum } from '~/utils/enums';
+} from "firebase/auth";
+import type { SocialLogin } from "~/types/pre-built/1-auth";
+import { AccountTypeEnum } from "~/utils/enums";
 
 export const useFirebase = () => {
   const config = useRuntimeConfig();
@@ -35,14 +35,8 @@ export const useFirebase = () => {
     const { user } = await signInWithPopup(auth, provider);
 
     const userItem: SocialLogin = {
-      socialID: user.uid,
-      fullName: user.displayName,
+      idToken: user.uid,
       accountType: AccountTypeEnum.Google,
-      email: user.email,
-      avatar: user.photoURL,
-      dateOfBirth: null,
-      gender: GenderEnum.Other,
-      deviceID: null,
     };
 
     await socialLogin(userItem);

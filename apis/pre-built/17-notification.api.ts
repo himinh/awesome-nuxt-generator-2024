@@ -1,10 +1,10 @@
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { Setting } from '~/types/pre-built/16-setting';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { Setting } from "~/types/pre-built/16-setting";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const NOTIFICATION_URL = '/notifications';
+const NOTIFICATION_URL = "/notifications";
 export const notificationApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -45,7 +45,7 @@ export const notificationApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${NOTIFICATION_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${NOTIFICATION_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<Setting> => {

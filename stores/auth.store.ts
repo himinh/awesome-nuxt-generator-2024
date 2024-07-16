@@ -1,16 +1,16 @@
-import { authApi } from '~/apis/pre-built/1-auth.api';
+import { authApi } from "~/apis/pre-built/1-auth.api";
 import type {
   AuthUser,
   Login,
   Register,
   ResetPassword,
   SocialLogin,
-} from '~/types/pre-built/1-auth';
-import { handleError } from '~/utils/helpers/handle-error.helper';
-import { storageHelper } from '~/utils/helpers/storage.helper';
+} from "~/types/pre-built/1-auth";
+import { handleError } from "~/utils/helpers/handle-error.helper";
+import { storageHelper } from "~/utils/helpers/storage.helper";
 
-export const useAuthStore = defineStore('auth', () => {
-  const forgotPassSent = reactive({ isSent: false, email: '' });
+export const useAuthStore = defineStore("auth", () => {
+  const forgotPassSent = reactive({ isSent: false, email: "" });
   const authUser = ref<AuthUser | null>(storageHelper.getAuth());
   const loading = ref<boolean>(false);
 

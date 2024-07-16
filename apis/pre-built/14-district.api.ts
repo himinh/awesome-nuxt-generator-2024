@@ -1,10 +1,10 @@
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { District } from '~/types/pre-built/14-district';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { District } from "~/types/pre-built/14-district";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const DISTRICT_URL = '/districts';
+const DISTRICT_URL = "/districts";
 export const districtApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -45,7 +45,7 @@ export const districtApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${DISTRICT_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${DISTRICT_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<District> => {

@@ -1,9 +1,9 @@
-import type { Gift } from '~/types/5-gift';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { Gift } from "~/types/5-gift";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const REVIEW_URL = '/gifts';
+const REVIEW_URL = "/gifts";
 export const giftApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -44,7 +44,7 @@ export const giftApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${REVIEW_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${REVIEW_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<Gift> => {

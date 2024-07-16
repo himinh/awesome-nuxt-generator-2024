@@ -1,16 +1,16 @@
-import { toast } from '~/components/ui/toast';
-import type { ErrorDetail } from '~/types/error-detail';
-import type { Exception } from '~/types/exception';
-import { ErrorTypeEnum } from '../enums';
+import { toast } from "~/components/ui/toast";
+import type { ErrorDetail } from "~/types/error-detail";
+import type { Exception } from "~/types/exception";
+import { ErrorTypeEnum } from "../enums";
 
 const formatErrorMsg = (errorType: ErrorTypeEnum, details: ErrorDetail[]) => {
   if (errorType === ErrorTypeEnum.ValidationExceptions) {
     const property = details?.[0]?.property;
-    const message = details?.[0]?.message?.replace(property, '').trim();
+    const message = details?.[0]?.message?.replace(property, "").trim();
 
     return `${property[0].toUpperCase()}${property.slice(1)}: ${message}`;
   }
-  return details?.[0]?.message || 'Something went wrong!';
+  return details?.[0]?.message || "Something went wrong!";
 };
 
 export const handleError = (error: any) => {
@@ -28,12 +28,12 @@ export const handleError = (error: any) => {
     ? formatErrorMsg(errorType, error.data.errors)
     : error.errorMsg;
 
-  console.log('API ERROR :::::', { errorTitle, errorMsg });
+  console.log("API ERROR :::::", { errorTitle, errorMsg });
 
   toast({
     title: errorTitle,
     description: errorMsg,
-    variant: 'destructive',
+    variant: "destructive",
   });
 
   return {

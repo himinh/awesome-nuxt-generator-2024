@@ -1,4 +1,4 @@
-import type { Province } from './13-province';
+import type { Province } from "./13-province";
 
 export type District = {
   _id?: string;

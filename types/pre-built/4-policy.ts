@@ -1,6 +1,6 @@
-import type { HttpMethod } from '~/utils/enums';
-import type { User } from './2-user';
-import type { UserGroup } from './3-user-group';
+import type { HttpMethod } from "~/utils/enums";
+import type { User } from "./2-user";
+import type { UserGroup } from "./3-user-group";
 
 export type Policy = {
   _id?: string;

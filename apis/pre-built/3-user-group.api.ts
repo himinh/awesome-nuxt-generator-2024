@@ -1,10 +1,10 @@
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { UserGroup } from '~/types/pre-built/3-user-group';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { UserGroup } from "~/types/pre-built/3-user-group";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const USER_GROUP_URL = '/user_groups';
+const USER_GROUP_URL = "/user_groups";
 export const userGroupGroupApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -45,7 +45,7 @@ export const userGroupGroupApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${USER_GROUP_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${USER_GROUP_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<UserGroup> => {

@@ -1,10 +1,10 @@
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { MenuGroup } from '~/types/pre-built/6-menu-group';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { MenuGroup } from "~/types/pre-built/6-menu-group";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const MENU_GROUP_URL = '/menu_groups';
+const MENU_GROUP_URL = "/menu_groups";
 export const menuGroupApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -45,7 +45,7 @@ export const menuGroupApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${MENU_GROUP_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${MENU_GROUP_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<MenuGroup> => {

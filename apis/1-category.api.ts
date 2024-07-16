@@ -1,9 +1,9 @@
-import type { Category } from '~/types/1-category';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { Category } from "~/types/1-category";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const CATEGORY_URL = '/categories';
+const CATEGORY_URL = "/categories";
 export const categoryApi = {
   //  ----- Method: GET -----
   getById: (
@@ -37,7 +37,7 @@ export const categoryApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${CATEGORY_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${CATEGORY_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<Category> => {

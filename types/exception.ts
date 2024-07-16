@@ -1,4 +1,4 @@
-import type { ErrorDetail } from './error-detail';
+import type { ErrorDetail } from "./error-detail";
 
 export type Exception = {
   type: string;

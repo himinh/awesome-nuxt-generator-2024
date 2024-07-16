@@ -1,8 +1,8 @@
-import type { AuthUser } from '~/types/pre-built/1-auth';
+import type { AuthUser } from "~/types/pre-built/1-auth";
 
 export const storageKeys = {
-  token: '_app_login',
-  carts: 'carts',
+  token: "_app_login",
+  carts: "carts",
 };
 
 export const storageHelper = {

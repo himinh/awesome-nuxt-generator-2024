@@ -1,5 +1,5 @@
-import type { Province } from './13-province';
-import type { District } from './14-district';
+import type { Province } from "./13-province";
+import type { District } from "./14-district";
 
 export type Ward = {
   _id?: string;

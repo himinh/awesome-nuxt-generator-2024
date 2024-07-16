@@ -1,5 +1,5 @@
 export const useSearch = () => {
-  const isOpen = useState('filterModal', () => false);
+  const isOpen = useState("filterModal", () => false);
 
   const onOpen = () => {
     isOpen.value = true;

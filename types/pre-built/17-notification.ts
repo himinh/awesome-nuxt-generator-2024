@@ -1,5 +1,5 @@
-import type { NotificationType, TargetType } from '~/utils/enums';
-import type { User } from './2-user';
+import type { NotificationType, TargetType } from "~/utils/enums";
+import type { User } from "./2-user";
 
 export type Notification = {
   _id?: string;

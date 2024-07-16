@@ -1,7 +1,7 @@
 export const useLogin = () => {
   const router = useRouter();
 
-  const onOpen = (auth: 'register' | 'login' = 'login') => {
+  const onOpen = (auth: "register" | "login" = "login") => {
     router.push({ query: { auth } });
   };
 

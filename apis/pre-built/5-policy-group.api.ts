@@ -1,10 +1,10 @@
-import type { PaginateResponse } from '~/types/paginate-reponse.type';
-import type { PolicyGroup } from '~/types/pre-built/5-policy-group';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { PaginateResponse } from "~/types/paginate-reponse.type";
+import type { PolicyGroup } from "~/types/pre-built/5-policy-group";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const POLICY_GROUP_URL = '/policy_groups';
+const POLICY_GROUP_URL = "/policy_groups";
 export const policyGroupApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -45,7 +45,7 @@ export const policyGroupApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${POLICY_GROUP_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${POLICY_GROUP_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<PolicyGroup> => {

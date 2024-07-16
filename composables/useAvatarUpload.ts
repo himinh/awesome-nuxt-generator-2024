@@ -1,5 +1,5 @@
 export const useAvatarUpload = () => {
-  const isOpen = useState('avatarUploadModal', () => false);
+  const isOpen = useState("avatarUploadModal", () => false);
 
   const onOpen = () => {
     isOpen.value = true;

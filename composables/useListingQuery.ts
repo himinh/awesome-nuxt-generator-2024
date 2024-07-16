@@ -1,5 +1,5 @@
-import { useCategoryStore } from '~/stores/category.store';
-import type { PaginationParams } from '~/utils/types';
+import { useCategoryStore } from "~/stores/category.store";
+import type { PaginationParams } from "~/utils/types";
 
 export const useListingQuery = () => {
   const filter = computed(() => {
@@ -7,7 +7,7 @@ export const useListingQuery = () => {
     const { auth, ...rest } = query;
 
     const obj: PaginationParams = {
-      _populate: 'categoryIds,hostId',
+      _populate: "categoryIds,hostId",
     };
 
     if (rest._page) obj._page = Number(rest._page);

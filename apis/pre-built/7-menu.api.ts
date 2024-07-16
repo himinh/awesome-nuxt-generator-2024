@@ -1,9 +1,9 @@
-import type { Menu } from '~/types/pre-built/7-menu';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { Menu } from "~/types/pre-built/7-menu";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const MENU_URL = '/menus';
+const MENU_URL = "/menus";
 export const menuApi = {
   //  ----- Method: GET -----
   getById: (
@@ -37,7 +37,7 @@ export const menuApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${MENU_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${MENU_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<Menu> => {

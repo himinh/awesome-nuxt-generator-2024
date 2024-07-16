@@ -1,9 +1,9 @@
-import type { Review } from '~/types/4-review';
-import type { UpdateResult } from '~/types/update-result';
-import { authFetch, guestFetch } from '~/utils/fetch';
-import type { FetchOptions, PaginationParams } from '~/utils/types';
+import type { Review } from "~/types/4-review";
+import type { UpdateResult } from "~/types/update-result";
+import { authFetch, guestFetch } from "~/utils/fetch";
+import type { FetchOptions, PaginationParams } from "~/utils/types";
 
-const REVIEW_URL = '/reviews';
+const REVIEW_URL = "/reviews";
 export const bookingApi = {
   //  ----- Method: GET -----
   paginate: (
@@ -44,7 +44,7 @@ export const bookingApi = {
 
   //  ----- Method: DELETE -----
   deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-    return authFetch.delete(`${REVIEW_URL}/${ids.join(',')}/ids`);
+    return authFetch.delete(`${REVIEW_URL}/${ids.join(",")}/ids`);
   },
 
   deleteById: (id: string): Promise<Review> => {

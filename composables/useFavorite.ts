@@ -1,5 +1,5 @@
-import { listingApi } from '~/apis/2-listing.api';
-import { ActionEnum } from '~/utils/enums';
+import { listingApi } from "~/apis/2-listing.api";
+import { ActionEnum } from "~/utils/enums";
 
 interface FavoriteProps {
   listingId: string;
@@ -11,7 +11,7 @@ export const useFavorite = ({ listingId }: FavoriteProps) => {
   const { authUser } = storeToRefs(authStore);
 
   const toggleFavorite = async (isWishlist: boolean) => {
-    if (!authUser.value?.user._id) return useLogin().onOpen('login');
+    if (!authUser.value?.user._id) return useLogin().onOpen("login");
 
     await listingApi.updateWishlist(
       listingId,

@@ -2,8 +2,8 @@ import type {
   ResourceTypeEnum,
   StorageLocationEnum,
   UploadType,
-} from '~/utils/enums';
-import type { User } from './2-user';
+} from "~/utils/enums";
+import type { User } from "./2-user";
 
 export type UserFile = {
   _id?: string;
