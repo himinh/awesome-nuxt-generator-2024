@@ -6,36 +6,36 @@ import type { FetchOptions, PaginationParams } from '~/utils/types';
 
 const USER_FILE_URL = '/user_files';
 export const userFileApi = {
-	//  ----- Method: GET -----
-	paginate: (
-		query?: PaginationParams,
-		options?: FetchOptions
-	): Promise<PaginateResponse<UserFile>> => {
-		return authFetch.get(`${USER_FILE_URL}/paginate`, query, options);
-	},
+  //  ----- Method: GET -----
+  paginate: (
+    query?: PaginationParams,
+    options?: FetchOptions,
+  ): Promise<PaginateResponse<UserFile>> => {
+    return authFetch.get(`${USER_FILE_URL}/paginate`, query, options);
+  },
 
-	getById: (
-		id: string,
-		query?: PaginationParams,
-		options?: FetchOptions
-	): Promise<UserFile> => {
-		return authFetch.get(`${USER_FILE_URL}/${id}`, query, options);
-	},
+  getById: (
+    id: string,
+    query?: PaginationParams,
+    options?: FetchOptions,
+  ): Promise<UserFile> => {
+    return authFetch.get(`${USER_FILE_URL}/${id}`, query, options);
+  },
 
-	//  ----- Method: PATCH -----
-	deleteByFileName: (
-		fileName: string,
-		options?: FetchOptions
-	): Promise<UserFile> => {
-		return authFetch.delete(`${USER_FILE_URL}/filename/${fileName}`, options);
-	},
+  //  ----- Method: PATCH -----
+  deleteByFileName: (
+    fileName: string,
+    options?: FetchOptions,
+  ): Promise<UserFile> => {
+    return authFetch.delete(`${USER_FILE_URL}/filename/${fileName}`, options);
+  },
 
-	//  ----- Method: DELETE -----
-	deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-		return authFetch.delete(`${USER_FILE_URL}/${ids.join(',')}/ids`);
-	},
+  //  ----- Method: DELETE -----
+  deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
+    return authFetch.delete(`${USER_FILE_URL}/${ids.join(',')}/ids`);
+  },
 
-	deleteById: (id: string): Promise<UserFile> => {
-		return authFetch.delete(`${USER_FILE_URL}/${id}`);
-	},
+  deleteById: (id: string): Promise<UserFile> => {
+    return authFetch.delete(`${USER_FILE_URL}/${id}`);
+  },
 };

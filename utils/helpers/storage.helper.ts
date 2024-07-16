@@ -1,36 +1,36 @@
-import type { AuthUser } from '~/types/auth.type';
+import type { AuthUser } from '~/types/pre-built/1-auth';
 
 export const storageKeys = {
-	token: '_app_login',
-	carts: 'carts',
+  token: '_app_login',
+  carts: 'carts',
 };
 
 export const storageHelper = {
-	getAuth(): AuthUser | null {
-		const authString = localStorage.getItem(storageKeys.token);
+  getAuth(): AuthUser | null {
+    const authString = localStorage.getItem(storageKeys.token);
 
-		return authString ? JSON.parse(authString) : null;
-	},
+    return authString ? JSON.parse(authString) : null;
+  },
 
-	setAuth(auth: AuthUser) {
-		localStorage.setItem(storageKeys.token, JSON.stringify(auth));
-	},
+  setAuth(auth: AuthUser) {
+    localStorage.setItem(storageKeys.token, JSON.stringify(auth));
+  },
 
-	clearAuth() {
-		localStorage.removeItem(storageKeys.token);
-	},
+  clearAuth() {
+    localStorage.removeItem(storageKeys.token);
+  },
 
-	getCarts() {
-		const carts = localStorage.getItem(storageKeys.carts);
+  getCarts() {
+    const carts = localStorage.getItem(storageKeys.carts);
 
-		return carts ? JSON.parse(carts) : null;
-	},
+    return carts ? JSON.parse(carts) : null;
+  },
 
-	setCarts(carts: any[]) {
-		localStorage.setItem(storageKeys.carts, JSON.stringify(carts));
-	},
+  setCarts(carts: any[]) {
+    localStorage.setItem(storageKeys.carts, JSON.stringify(carts));
+  },
 
-	clearCarts() {
-		localStorage.removeItem(storageKeys.carts);
-	},
+  clearCarts() {
+    localStorage.removeItem(storageKeys.carts);
+  },
 };

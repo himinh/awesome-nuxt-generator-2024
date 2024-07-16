@@ -1,9 +1,9 @@
 export type ChatCompletionRequestMessage = {
-	role: 'user' | 'assistant';
-	content: string;
+  role: 'user' | 'assistant';
+  content: string;
 };
 
 export type AudioResponse = {
-	audio: string;
-	spectrogram: string;
+  audio: string;
+  spectrogram: string;
 };

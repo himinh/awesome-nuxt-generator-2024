@@ -6,49 +6,49 @@ import type { FetchOptions, PaginationParams } from '~/utils/types';
 
 const NOTIFICATION_URL = '/notifications';
 export const notificationApi = {
-	//  ----- Method: GET -----
-	paginate: (
-		query?: PaginationParams,
-		options?: FetchOptions
-	): Promise<PaginateResponse<Setting>> => {
-		return authFetch.get(`${NOTIFICATION_URL}/paginate`, query, options);
-	},
+  //  ----- Method: GET -----
+  paginate: (
+    query?: PaginationParams,
+    options?: FetchOptions,
+  ): Promise<PaginateResponse<Setting>> => {
+    return authFetch.get(`${NOTIFICATION_URL}/paginate`, query, options);
+  },
 
-	count: (
-		query?: PaginationParams,
-		options?: FetchOptions
-	): Promise<PaginateResponse<Setting>> => {
-		return authFetch.get(`${NOTIFICATION_URL}/count`, query, options);
-	},
+  count: (
+    query?: PaginationParams,
+    options?: FetchOptions,
+  ): Promise<PaginateResponse<Setting>> => {
+    return authFetch.get(`${NOTIFICATION_URL}/count`, query, options);
+  },
 
-	getById: (
-		id: string,
-		query?: PaginationParams,
-		options?: FetchOptions
-	): Promise<Setting> => {
-		return authFetch.get(`${NOTIFICATION_URL}/${id}`, query, options);
-	},
+  getById: (
+    id: string,
+    query?: PaginationParams,
+    options?: FetchOptions,
+  ): Promise<Setting> => {
+    return authFetch.get(`${NOTIFICATION_URL}/${id}`, query, options);
+  },
 
-	//  ----- Method: POST -----
-	create: (body: Setting, options?: FetchOptions): Promise<Setting> => {
-		return authFetch.post(NOTIFICATION_URL, body, options);
-	},
+  //  ----- Method: POST -----
+  create: (body: Setting, options?: FetchOptions): Promise<Setting> => {
+    return authFetch.post(NOTIFICATION_URL, body, options);
+  },
 
-	//  ----- Method: PATCH -----
-	updateById: (
-		id: string,
-		body: Setting,
-		options?: FetchOptions
-	): Promise<Setting> => {
-		return authFetch.patch(`${NOTIFICATION_URL}/${id}`, body, options);
-	},
+  //  ----- Method: PATCH -----
+  updateById: (
+    id: string,
+    body: Setting,
+    options?: FetchOptions,
+  ): Promise<Setting> => {
+    return authFetch.patch(`${NOTIFICATION_URL}/${id}`, body, options);
+  },
 
-	//  ----- Method: DELETE -----
-	deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
-		return authFetch.delete(`${NOTIFICATION_URL}/${ids.join(',')}/ids`);
-	},
+  //  ----- Method: DELETE -----
+  deleteManyByIds: (ids: string[]): Promise<UpdateResult> => {
+    return authFetch.delete(`${NOTIFICATION_URL}/${ids.join(',')}/ids`);
+  },
 
-	deleteById: (id: string): Promise<Setting> => {
-		return authFetch.delete(`${NOTIFICATION_URL}/${id}`);
-	},
+  deleteById: (id: string): Promise<Setting> => {
+    return authFetch.delete(`${NOTIFICATION_URL}/${id}`);
+  },
 };

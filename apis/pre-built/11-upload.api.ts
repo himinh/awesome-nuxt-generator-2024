@@ -5,40 +5,40 @@ import type { FetchOptions } from '~/utils/types';
 
 const UPLOAD_URL = '/uploads';
 export const uploadApi = {
-	//  ----- Method: POST -----
-	uploadFiles: (
-		input: {
-			file: File[];
-			imageSizes?: ImageSize[];
-		},
-		options?: FetchOptions
-	): Promise<Menu> => {
-		const formData = new FormData();
+  //  ----- Method: POST -----
+  uploadFiles: (
+    input: {
+      file: File[];
+      imageSizes?: ImageSize[];
+    },
+    options?: FetchOptions,
+  ): Promise<Menu> => {
+    const formData = new FormData();
 
-		input.file.forEach((file) => {
-			formData.append('files', file);
-		});
+    input.file.forEach((file) => {
+      formData.append('files', file);
+    });
 
-		input.imageSizes?.forEach((imageSize) => {
-			formData.append('imageSizes', imageSize);
-		});
+    input.imageSizes?.forEach((imageSize) => {
+      formData.append('imageSizes', imageSize);
+    });
 
-		return authFetch.post(UPLOAD_URL, formData, options);
-	},
+    return authFetch.post(UPLOAD_URL, formData, options);
+  },
 
-	uploadFile: (
-		input: {
-			file: File;
-			imageSizes?: ImageSize[];
-		},
-		options?: FetchOptions
-	): Promise<Menu> => {
-		const formData = new FormData();
-		formData.append('file', input.file);
+  uploadFile: (
+    input: {
+      file: File;
+      imageSizes?: ImageSize[];
+    },
+    options?: FetchOptions,
+  ): Promise<Menu> => {
+    const formData = new FormData();
+    formData.append('file', input.file);
 
-		input.imageSizes?.forEach((imageSize) => {
-			formData.append('imageSizes', imageSize);
-		});
-		return authFetch.post(UPLOAD_URL, formData, options);
-	},
+    input.imageSizes?.forEach((imageSize) => {
+      formData.append('imageSizes', imageSize);
+    });
+    return authFetch.post(UPLOAD_URL, formData, options);
+  },
 };

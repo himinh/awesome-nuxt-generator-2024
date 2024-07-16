@@ -1,4 +1,4 @@
 export type DeleteResult = {
-	deletedCount: number;
-	acknowledged: boolean;
+  deletedCount: number;
+  acknowledged: boolean;
 };

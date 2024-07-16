@@ -1,152 +1,158 @@
 import { authApi } from '~/apis/pre-built/1-auth.api';
 import type {
-	AuthUser,
-	Login,
-	Register,
-	ResetPassword,
-	SocialLogin,
+  AuthUser,
+  Login,
+  Register,
+  ResetPassword,
+  SocialLogin,
 } from '~/types/pre-built/1-auth';
 import { handleError } from '~/utils/helpers/handle-error.helper';
 import { storageHelper } from '~/utils/helpers/storage.helper';
 
 export const useAuthStore = defineStore('auth', () => {
-	const forgotPassSent = reactive({ isSent: false, email: '' });
-	const authUser = ref<AuthUser | null>(storageHelper.getAuth());
-	const loading = ref<boolean>(false);
+  const forgotPassSent = reactive({ isSent: false, email: '' });
+  const authUser = ref<AuthUser | null>(storageHelper.getAuth());
+  const loading = ref<boolean>(false);
 
-	const login = async (inputs: Login) => {
-		const data = await _asyncHandler(() => authApi.login(inputs));
+  const register = async (input: Register) => {
+    const data = await _asyncHandler(() => authApi.register(input));
+    console.log({ data });
 
-		if (data) _setAuth(data);
-	};
+    if (data) _setAuth(data);
 
-	const socialLogin = async (inputs: SocialLogin) => {
-		const data = await _asyncHandler(() => authApi.socialLogin(inputs));
+    return data;
+  };
 
-		if (data) _setAuth(data);
-	};
+  const login = async (input: Login) => {
+    const data = await _asyncHandler(() => authApi.login(input));
 
-	const register = async (inputs: Register) => {
-		const data = await _asyncHandler(() => authApi.register(inputs));
+    if (data) _setAuth(data);
 
-		if (data) _setAuth(data.value!);
-	};
+    return data;
+  };
 
-	const logout = async () => {
-		await useAsyncData(() => authApi.logout());
+  const socialLogin = async (input: SocialLogin) => {
+    const data = await _asyncHandler(() => authApi.socialLogin(input));
 
-		navigateTo('/auth/login');
-		_clearAuth();
-	};
+    if (data) _setAuth(data);
 
-	const forgotPassword = async (email: string) => {
-		const data = await _asyncHandler(() => authApi.forgotPassword(email));
+    return data;
+  };
 
-		if (data) setForgotPassSent(true, data.email);
-	};
+  const logout = async () => {
+    await _asyncHandler(() => authApi.logout());
 
-	const resetPassword = async (inputs: ResetPassword) => {
-		const data = await _asyncHandler(() => authApi.resetPassword(inputs));
+    // navigateTo('/auth/login');
+    _clearAuth();
+  };
 
-		if (data) {
-			_setAuth(data);
+  const forgotPassword = async (email: string) => {
+    const data = await _asyncHandler(() => authApi.forgotPassword(email));
 
-			return data;
-		}
-	};
+    if (data) setForgotPassSent(true, data.email);
+  };
 
-	const getAccessToken = async () => {
-		if (!authUser.value) return null;
+  const resetPassword = async (input: ResetPassword) => {
+    const data = await _asyncHandler(() => authApi.resetPassword(input));
 
-		const currentMS = new Date().getTime();
-		const { accessToken, refreshToken } = authUser.value;
+    if (data) {
+      _setAuth(data);
 
-		if (accessToken.expiresAt > currentMS) return accessToken.token;
+      return data;
+    }
+  };
 
-		if (refreshToken.expiresAt < currentMS) {
-			_clearAuth();
-			return null;
-		}
+  const getAccessToken = async () => {
+    if (!authUser.value) return null;
 
-		const data = await refreshAuthByRfToken(refreshToken.token);
+    const currentMS = new Date().getTime();
+    const { accessToken, refreshToken } = authUser.value;
 
-		if (data) return data.accessToken.token;
+    if (accessToken.expiresAt > currentMS) return accessToken.token;
 
-		_clearAuth();
-		return null;
-	};
+    if (refreshToken.expiresAt < currentMS) {
+      _clearAuth();
+      return null;
+    }
 
-	const refreshAuthByRfToken = async (rfToken: string) => {
-		try {
-			const data = await authApi.refreshToken(rfToken);
+    const data = await refreshAuthByRfToken(refreshToken.token);
 
-			_setAuth(data);
+    if (data) return data.accessToken.token;
 
-			return data;
-		} catch (error) {
-			handleError(error);
-			_clearAuth();
+    _clearAuth();
+    return null;
+  };
 
-			return null;
-		}
-	};
+  const refreshAuthByRfToken = async (rfToken: string) => {
+    try {
+      const data = await authApi.refreshToken(rfToken);
 
-	/**
-	 * Set auth
-	 *
-	 * @param data
-	 */
-	const _setAuth = (data: AuthUser) => {
-		authUser.value = { ...authUser.value, ...data };
-		storageHelper.setAuth(authUser.value);
-	};
+      _setAuth(data);
 
-	/**
-	 * Clear auth
-	 */
-	const _clearAuth = () => {
-		storageHelper.clearAuth();
-		authUser.value = null;
-	};
+      return data;
+    } catch (error) {
+      handleError(error);
+      _clearAuth();
 
-	const setForgotPassSent = (isSent: boolean, email?: string) => {
-		forgotPassSent.isSent = isSent;
+      return null;
+    }
+  };
 
-		if (email) forgotPassSent.email = email;
-	};
+  /**
+   * Set auth
+   *
+   * @param data
+   */
+  const _setAuth = (data: AuthUser) => {
+    authUser.value = { ...authUser.value, ...data };
+    storageHelper.setAuth(authUser.value);
+  };
 
-	/**
-	 * async handler
-	 *
-	 * @param handler
-	 * @returns
-	 */
-	const _asyncHandler = async (handler: () => Promise<any>) => {
-		loading.value = true;
+  /**
+   * Clear auth
+   */
+  const _clearAuth = () => {
+    storageHelper.clearAuth();
+    authUser.value = null;
+  };
 
-		const { data, error } = await useAsyncData(handler);
+  const setForgotPassSent = (isSent: boolean, email?: string) => {
+    forgotPassSent.isSent = isSent;
 
-		loading.value = false;
+    if (email) forgotPassSent.email = email;
+  };
 
-		if (error.value) {
-			handleError(error.value);
-			return null;
-		}
+  /**
+   * async handler
+   *
+   * @param handler
+   * @returns
+   */
+  const _asyncHandler = async (handler: () => Promise<any>) => {
+    loading.value = true;
 
-		return data.value;
-	};
+    try {
+      const res = await handler();
 
-	return {
-		authUser,
-		loading,
-		login,
-		register,
-		logout,
-		getAccessToken,
-		setForgotPassSent,
-		forgotPassword,
-		forgotPassSent,
-		resetPassword,
-		socialLogin,
-	};
+      return res;
+    } catch (error) {
+      handleError(error);
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  return {
+    authUser,
+    loading,
+    login,
+    register,
+    logout,
+    getAccessToken,
+    setForgotPassSent,
+    forgotPassword,
+    forgotPassSent,
+    resetPassword,
+    socialLogin,
+  };
 });
